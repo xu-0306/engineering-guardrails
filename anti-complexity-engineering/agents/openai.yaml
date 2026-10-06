@@ -1,3 +1,4 @@
-display_name: Anti-Complexity Engineering
-short_description: Prevent accidental complexity and layer accretion while designing.
-default_prompt: Use the anti-complexity-engineering skill before designing or changing this. Check how a reference implementation does it, map the feature onto existing primitives, list every new concept with its observed requirement, and state what the change deletes or merges.
+interface:
+  display_name: "Anti-Complexity Engineering"
+  short_description: "Keep architecture and plans aligned with the requested outcome."
+  default_prompt: "Use $anti-complexity-engineering to deliver the requested outcome using existing primitives, justify necessary additions, and keep planning and verification proportional."

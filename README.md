@@ -5,17 +5,19 @@ Skills for coding agents (Codex, Claude Code, and other agents that load `SKILL.
 | Skill | Prevents | Use when |
 |---|---|---|
 | [anti-hardcode-engineering](anti-hardcode-engineering/) | fixes that are too narrow: keyword lists, copied examples, brittle selectors, provider strings | fixing a specific open-world bug at one boundary |
-| [anti-complexity-engineering](anti-complexity-engineering/) | designs that are too big: extra entities, parallel lifecycles, predict-then-gate layers, plans that only add | designing features, writing plans, reviewing changes that add concepts |
+| [anti-complexity-engineering](anti-complexity-engineering/) | unnecessary entities and layers, parallel lifecycles, scope drift, and excessive planning or completion gates | designing or reviewing structural changes, or fixes that add wrappers |
 
-They are meant to be used together. anti-hardcode-engineering chooses the right abstraction for one bug; anti-complexity-engineering keeps that abstraction from spreading into a global layer, and its concept budget takes precedence when the two conflict.
+Use either skill when relevant, or both when a fix needs them. anti-hardcode-engineering chooses the right abstraction for one bug; anti-complexity-engineering keeps that abstraction and the surrounding workflow proportional to the requested outcome.
 
 ## anti-complexity-engineering in short
 
-1. Reference alignment: check how a mature implementation does the same feature before designing.
-2. Primitive mapping: express the feature with existing primitives first.
-3. Concept budget: every new entity, status, table, field, or layer needs an observed requirement.
-4. Deletion ledger: every change says what it deletes or merges.
-5. Proportional planning: plan size matches the change.
+1. Keep the user's requested outcome and agreed acceptance criteria fixed; optional improvements do not block delivery.
+2. Reuse existing primitives and justify new concepts with concrete requirements. Consult references when the architectural choice needs them.
+3. Fix root causes and remove redundant paths when safe, without forcing unrelated deletions or rewrites.
+4. Keep planning and verification proportional. Tests verify requirements rather than inventing them.
+5. Deliver when the complete requested flow works and necessary checks pass. Reassess inherited TODOs instead of automatically extending the task.
+
+Concept tables, deletion ledgers, and fixed report fields are not mandatory. Use supporting notes only when they clarify a real tradeoff or follow-up dependency.
 
 Security, data-loss prevention, real concurrency issues, required audit, and measured performance work are explicitly kept.
 
