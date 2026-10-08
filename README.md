@@ -1,13 +1,14 @@
 # Engineering Guardrails
 
-Skills for coding agents (Codex, Claude Code, and other agents that load `SKILL.md` folders) that keep changes from going wrong in two opposite directions.
+Skills for coding agents (Codex, Claude Code, and other agents that load `SKILL.md` folders) that keep implementations aligned with the user's requested outcome.
 
 | Skill | Prevents | Use when |
 |---|---|---|
 | [anti-hardcode-engineering](anti-hardcode-engineering/) | fixes that are too narrow: keyword lists, copied examples, brittle selectors, provider strings | fixing a specific open-world bug at one boundary |
 | [anti-complexity-engineering](anti-complexity-engineering/) | unnecessary entities and layers, parallel lifecycles, scope drift, and excessive planning or completion gates | designing or reviewing structural changes, or fixes that add wrappers |
+| [ui-reference-fidelity](ui-reference-fidelity/) | drift from a chosen UI reference, incomplete interactions, and functional checks mistaken for UX acceptance | implementing a reference design or fixing a working-but-wrong interface |
 
-Use either skill when relevant, or both when a fix needs them. anti-hardcode-engineering chooses the right abstraction for one bug; anti-complexity-engineering keeps that abstraction and the surrounding workflow proportional to the requested outcome.
+Use the skills relevant to the task. anti-hardcode-engineering chooses the right abstraction for one bug; anti-complexity-engineering keeps that abstraction and the surrounding workflow proportional to the requested outcome. ui-reference-fidelity preserves the chosen design and verifies visible interaction results without requiring a framework change or a full-product audit.
 
 ## anti-complexity-engineering in short
 
@@ -23,11 +24,12 @@ Security, data-loss prevention, real concurrency issues, required audit, and mea
 
 ## Installation
 
-Copy one or both skill folders into your skills directory, for example:
+Copy the skill folders you need into your skills directory, for example:
 
 ```text
 ~/.codex/skills/anti-hardcode-engineering/
 ~/.codex/skills/anti-complexity-engineering/
+~/.codex/skills/ui-reference-fidelity/
 ~/.claude/skills/anti-complexity-engineering/
 ```
 
@@ -38,4 +40,5 @@ Each folder contains `SKILL.md` and `agents/openai.yaml` (UI metadata).
 ```text
 Use anti-complexity-engineering while designing this feature.
 Use anti-hardcode-engineering and anti-complexity-engineering while fixing this bug.
+Use ui-reference-fidelity to implement this mockup and verify the resulting layout and interactions.
 ```
