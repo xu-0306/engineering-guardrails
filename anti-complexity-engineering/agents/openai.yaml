@@ -1,4 +1,4 @@
 interface:
   display_name: "Anti-Complexity Engineering"
-  short_description: "Keep architecture and plans aligned with the requested outcome."
-  default_prompt: "Use $anti-complexity-engineering to deliver the requested outcome using existing primitives, justify necessary additions, and keep planning and verification proportional."
+  short_description: "Avoid excess layers and tests; finish replacements and cleanup."
+  default_prompt: "Use $anti-complexity-engineering to deliver the requested outcome with justified defenses and proportionate checks, finish affected callers, and remove code made obsolete without losing supported behavior."
