@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI 參考還原與體驗驗收"
+  short_description: "依參考稿實作 UI，保留設計主次並驗證操作結果，避免以功能測試代替體驗驗收"
+  default_prompt: "使用 $ui-reference-fidelity，依已選定的參考稿完成本次 UI 改動，保留設計主次與必要互動，按實際畫面和操作結果驗證。"
