@@ -1,0 +1,4 @@
+interface:
+  display_name: "Memory Sanity Check"
+  short_description: "Check prior assumptions without reopening settled scope."
+  default_prompt: "Use $memory-sanity-check to check consequential prior assumptions against current evidence, preserve agreed requirements, and compare alternatives only when a material gap remains."
