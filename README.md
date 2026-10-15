@@ -8,10 +8,11 @@ Skills for coding agents (Codex, Claude Code, and other agents that load `SKILL.
 | [anti-complexity-engineering](anti-complexity-engineering/) | unnecessary layers or defenses, expanding test scope, incomplete replacements, and dead code left by a change | designing, fixing, replacing, or reviewing code with these risks |
 | [ui-reference-fidelity](ui-reference-fidelity/) | drift from a chosen UI reference, incomplete interactions, and functional checks mistaken for UX acceptance | implementing a reference design or fixing a working-but-wrong interface |
 | [memory-sanity-check](memory-sanity-check/) | stale assumptions steering decisions, old proposals becoming requirements, and repeated replanning | a consequential direction depends on prior context or conflicts with current evidence |
+| [delegation-guardrails](delegation-guardrails/) | briefs that leave the implementer to invent rules, environment, or affected callers; green results reached by weakening tests or masking errors; reviews that trust the report | handing work to another agent, monitoring it, and reviewing what it returns |
 
 Use the skills relevant to the task. anti-hardcode-engineering chooses the right abstraction for one bug; anti-complexity-engineering keeps that abstraction and the surrounding workflow proportional to the requested outcome. ui-reference-fidelity preserves the chosen design and verifies visible interaction results without requiring a framework change or a full-product audit.
 
-memory-sanity-check checks whether prior assumptions still support the next decision while preserving agreed requirements. It also applies to product and research decisions. The skills are independent: select the relevant ones and share evidence between them rather than running all four as a fixed pipeline.
+memory-sanity-check checks whether prior assumptions still support the next decision while preserving agreed requirements. It also applies to product and research decisions. delegation-guardrails covers the hand-off itself: what a brief must name, how to tell a run finished, and how to review the returned diff (including `scripts/scan_masking.py`). The skills are independent: select the relevant ones and share evidence between them rather than running all of them as a fixed pipeline.
 
 ## anti-complexity-engineering in short
 
@@ -43,11 +44,15 @@ Copy the skill folders you need into your skills directory, for example:
 ~/.codex/skills/anti-complexity-engineering/
 ~/.codex/skills/ui-reference-fidelity/
 ~/.codex/skills/memory-sanity-check/
+~/.codex/skills/delegation-guardrails/
 ~/.claude/skills/anti-complexity-engineering/
 ~/.claude/skills/memory-sanity-check/
+~/.claude/skills/delegation-guardrails/
 ```
 
-Each folder contains `SKILL.md` and `agents/openai.yaml` (UI metadata).
+Each folder contains `SKILL.md` and `agents/openai.yaml` (UI metadata). delegation-guardrails also ships `references/brief-template.md` and `scripts/scan_masking.py`.
+
+Codex and Claude Code each read their own skills directory. After updating a skill here, copy it to every directory your agents load; an implementer reading an older copy follows the older rules.
 
 If you previously installed the standalone memory-sanity-check skill, replace that installed folder with `memory-sanity-check/` from this repository. Keep one installed copy with that name to avoid divergent instructions.
 
@@ -58,4 +63,5 @@ Use anti-complexity-engineering while designing this feature.
 Use anti-hardcode-engineering and anti-complexity-engineering while fixing this bug.
 Use ui-reference-fidelity to implement this mockup and verify the resulting layout and interactions.
 Use memory-sanity-check to check whether this handoff still supports the next implementation step without reopening agreed requirements.
+Use delegation-guardrails to write the Codex brief for this stage, then scan and review the diff it returns.
 ```
