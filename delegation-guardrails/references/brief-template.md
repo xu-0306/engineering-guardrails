@@ -23,9 +23,11 @@ A starting point for an implementer brief. Delete sections the task does not nee
 
 ## Affected Dependents
 
-<Only when removing, replacing, or unifying something.> Everything that depends on <X>, which must keep working or be migrated:
+<Only when removing, replacing, unifying, or narrowing something.> Everything that depends on <X>, which must keep working or be migrated:
 
-- <caller / registration / message / test>
+- Found by: `<search command>` → <N hits>
+- Feeds X: <producers; for each group, migrate or keep, and why>
+- Reads X: <callers / registration / message / test>
 
 ## Tasks
 
@@ -39,7 +41,7 @@ A starting point for an implementer brief. Delete sections the task does not nee
 
 ## Verification
 
-- During work: <type check + tests for the touched area>
+- During work: <type check + tests for the touched area; for a shared surface, every suite that asserts on its output, found by `<search command>`>
 - At hand-off: <full suite of each layer changed>
 - Left for integration (do not run): <packaging, full end-to-end sweep>
 - Pass means: <exit code 0 and the stated marker>; do not treat a wrapper's exit 0 as a pass.
