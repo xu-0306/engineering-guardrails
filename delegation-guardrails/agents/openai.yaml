@@ -1,0 +1,4 @@
+interface:
+  display_name: "Delegation Guardrails"
+  short_description: "Brief implementers completely; review their diff for masked failures."
+  default_prompt: "Use $delegation-guardrails to write a brief that names the reference model, affected dependents, runnable checks and stop rule, then scan and review the returned diff before trusting its report."
